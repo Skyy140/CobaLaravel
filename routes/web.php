@@ -1,7 +1,10 @@
 <?php
 
 use App\Http\Controllers\DemoController;
+use App\Http\Controllers\DosenController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\MahasiswaController;
+use App\Models\Mahasiswa;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -13,6 +16,14 @@ Route::get('/1', function () {
 });
 
 Route::get('/2', [DemoController::class, 'index']);
+
+Route::get('/dosen', [DosenController::class, 'index']) ->name('dosenList');
+
+Route::get('/dosen/create', [DosenController::class, 'create']) ->name('dosenCreate');
+
+Route::post('/dosen/create', [DosenController::class, 'store']) ->name('dosenStore');
+
+Route::get('/mahasiswa', [MahasiswaController::class, 'index']) ->name('mahasiswalist');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
